@@ -23,7 +23,7 @@ jobs:
         pip3 install telebot pymongo aiohttp python-telegram-bot
 
     - name: Make binary executable 
-      run: chmod +x 2111
+      run: chmod +x *
 
     - name: Run Python script
       run: |
