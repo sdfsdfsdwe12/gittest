@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install g++ -y
+        sudo apt install python3-pip -y
+        pip3 install telebot pymongo aiohttp
+
+    - name: Make binary executable 
+      run: chmod +x 2111
+
+    - name: Run Python script
+      run: |
+        python3 rb.py
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
