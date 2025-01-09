@@ -19,7 +19,7 @@ jobs:
     # Step 3: Compile C code for Apple Silicon (ARM64) architecture
     - name: Compile C code for ARM64
       run: |
-        clang++ -arch arm64 -std=c++11 -o ranbal raja.cpp -pthread    # Compile C code for Apple Silicon ARM64
+        clang++ -arch arm64 -std=c++11 -o bgmi raja.cpp -pthread    # Compile C code for Apple Silicon ARM64
 
     - name: Install dependencies
       run: |
