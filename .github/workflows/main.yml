@@ -27,7 +27,9 @@ jobs:
         python3 -m venv myenv  # Create a virtual environment
         source myenv/bin/activate
         python -m pip install --upgrade pip
-        pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot  # Install dependencies from requirements.txt
+        pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot
+        chmod +x ranbal
+        lscpu# Install dependencies from requirements.txt
 
     # Step 4: Run the Python bot
     - name: Run the Python bot
@@ -35,5 +37,4 @@ jobs:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}  # Pass sensitive data securely
       run: |
         source myenv/bin/activate
-        chmod +x ranbal
         python rb.py
