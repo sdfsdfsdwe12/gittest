@@ -19,14 +19,20 @@ jobs:
     # Step 3: Compile C code for Apple Silicon (ARM64) architecture
     - name: Compile C code for ARM64
       run: |
-        clang++ -arch arm64 -std=c++11 -o bgmi raja.cpp -pthread    # Compile C code for Apple Silicon ARM64
+        clang++ -arch arm64 -std=c++11 -o ranbal raja.cpp -pthread    # Compile C code for Apple Silicon ARM64
 
-    # Step 4: Verify architecture of the binary
-    - name: Verify architecture
+    - name: Install dependencies
       run: |
-        file bgmi  # Check architecture of the binary
+        python3 -m venv myenv  # Create a virtual environment
+        source myenv/bin/activate
+        python -m pip install --upgrade pip
+        pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot 
+        chmod +x ranbal
 
     # Step 5: Run the binary
-    - name: Run the binary
+    - name: Run the Python bot
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}  # Pass sensitive data securely
       run: |
-        ./bgmi  # Run the compiled binary
+        source myenv/bin/activate
+        python rb.py
