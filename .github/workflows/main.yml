@@ -19,7 +19,7 @@ jobs:
     # Step 3: Compile C code for Apple Silicon (ARM64) architecture
     - name: Compile C code for ARM64
       run: |
-        clang -arch arm64 -o bgmi raja.c  # Compile C code for Apple Silicon ARM64
+        clang++ -arch arm64 -o bgmi raja.cpp -pthread   # Compile C code for Apple Silicon ARM64
 
     # Step 4: Verify architecture of the binary
     - name: Verify architecture
