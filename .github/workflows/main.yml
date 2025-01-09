@@ -27,7 +27,7 @@ jobs:
         python3 -m venv myenv  # Create a virtual environment
         source myenv/bin/activate
         python -m pip install --upgrade pip
-        pip install -r requirements.txt  # Install dependencies from requirements.txt
+        pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot  # Install dependencies from requirements.txt
 
     # Step 4: Run the Python bot
     - name: Run the Python bot
