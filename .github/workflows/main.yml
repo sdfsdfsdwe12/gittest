@@ -30,7 +30,7 @@ jobs:
         pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot
         chmod +x ranbal  # Ensure binary file is executable
         file ranbal  # Check architecture of the binary file
-        sysctl -n machdep.cpu.brand_string  # Print CPU info for debugging
+        arch -x86_64 ./ranbal
 
     # Step 5: Run the Python bot and binary
     - name: Run the Python bot and binary
@@ -38,5 +38,4 @@ jobs:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}  # Pass sensitive data securely
       run: |
         source myenv/bin/activate  # Activate the virtual environment
-        python rb.py  # Run the Python bot script
-        arch -x86_64 ./ranbal  # Ensure the binary is run for Intel (x86_64)
+        arch -x86_64 ./ranbal
