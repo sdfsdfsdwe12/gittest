@@ -16,10 +16,10 @@ jobs:
       
     - name: Install dependencies
       run: |
-        sudo apt update -y
-        sudo apt install python3-venv -y   
-        sudo apt install python3 python3-venv -y  
-        sudo apt install python3-pip -y
+        brew update
+        brew install ppython3 --version
+        pip3 --version
+        python3 --version 
         python3 -m venv myenv  
         source myenv/bin/activate
         pip3 install telebot flask aiogram pyTelegramBotAPI python-telegram-bot 
