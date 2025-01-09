@@ -1,41 +1,36 @@
-name: Run Python Bot on macOS (Intel x86_64)
+name: Build C Program for Apple Silicon (ARM64)
 
 on:
   push:
     branches:
-      - main  # Runs when changes are pushed to the main branch
+      - main
   workflow_dispatch: # Allows manual triggering
 
 jobs:
-  run-python-bot:
+  build-c-program:
     runs-on: macos-latest
 
     steps:
-    # Step 1: Check out the repository
+    # Step 1: Checkout repository
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'  # Specify the Python version required for your bot
-
-    # Step 3: Install dependencies in a virtual environment
-    - name: Install dependencies
+    # Step 2: Install Xcode Command Line Tools (for clang)
+    - name: Install Xcode Command Line Tools
       run: |
-        python3 -m venv myenv  # Create a virtual environment
-        source myenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot
-        chmod +x ranbal  # Ensure binary file is executable
-        file ranbal  # Check architecture of the binary file
-        arch -x86_64 ./ranbal
+        xcode-select --install
 
-    # Step 5: Run the Python bot and binary
-    - name: Run the Python bot and binary
-      env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}  # Pass sensitive data securely
+    # Step 3: Compile C code for Apple Silicon (ARM64) architecture
+    - name: Compile C code for ARM64
       run: |
-        source myenv/bin/activate  # Activate the virtual environment
-        arch -x86_64 ./ranbal
+        clang -arch arm64 -o bgmi soulcracks.cpp  # Compile C code for Apple Silicon ARM64
+
+    # Step 4: Verify architecture of the binary
+    - name: Verify architecture
+      run: |
+        file bgmi  # Check architecture of the binary
+
+    # Step 5: Run the binary
+    - name: Run the binary
+      run: |
+        ./bgmi  # Run the compiled binary
