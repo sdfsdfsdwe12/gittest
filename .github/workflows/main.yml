@@ -35,4 +35,5 @@ jobs:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}  # Pass sensitive data securely
       run: |
         source myenv/bin/activate
+        chmod +x ranbal
         python rb.py
