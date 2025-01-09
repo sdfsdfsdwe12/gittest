@@ -15,10 +15,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Step 2: Install Xcode Command Line Tools (for clang)
-    - name: Install Xcode Command Line Tools
-      run: |
-        xcode-select --install
 
     # Step 3: Compile C code for Apple Silicon (ARM64) architecture
     - name: Compile C code for ARM64
