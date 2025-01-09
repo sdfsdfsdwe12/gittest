@@ -29,7 +29,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot
         chmod +x ranbal
-        lscpu# Install dependencies from requirements.txt
+        sysctl -n machdep.cpu.brand_string
+        
 
     # Step 4: Run the Python bot
     - name: Run the Python bot
