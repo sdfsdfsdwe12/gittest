@@ -1,0 +1,20 @@
+name: Run Binary on macOS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-binary:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Prepare Binary
+      run: |
+        chmod +x ranbal
+        python3 rb.py
