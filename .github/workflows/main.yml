@@ -27,7 +27,7 @@ jobs:
         source myenv/bin/activate
         python -m pip install --upgrade pip
         pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot 
-        chmod +x bgmi
+        chmod +x ranbal
 
     # Step 5: Run the binary
     - name: Run the Python bot
